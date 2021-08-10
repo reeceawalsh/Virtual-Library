@@ -1,3 +1,5 @@
+import 'bootstrap';
+
 let myLibrary = [harryPotter, lordOfTheRings];
 
 class Book {
