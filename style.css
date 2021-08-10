@@ -41,7 +41,7 @@ img {
   display: none;
 }
 
-#inputForm {
+#bookInputForm {
   position: absolute;
   top: 60%;
   left: 50%;
@@ -68,6 +68,10 @@ img {
 #addBookBtn:hover {
   background-color: rgba(16, 16, 16, 0.842);
   color: rgba(254, 203, 0, 0.911);
+}
+
+#closeFormBtn {
+  margin-left: 95%;
 }
 
 /* Footer */

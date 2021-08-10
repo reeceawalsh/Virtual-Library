@@ -15,7 +15,6 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
     <title>Book Tracker</title>
   </head>
   <body>
@@ -59,7 +58,7 @@
           <div>
             <h1>Book <span class="text-warning">Tracker</span></h1>
             <p class="lead ny-4">Track all of the books that you've read in the past and also all of the books that you look forward to reading. Rate each book and share your favourites with your friends!</p>
-            <button class="btn primaryColour btn-lg">Add Your Books</button>
+            <button id="popUpBtn" class="btn primaryColour btn-lg">Add Your Books</button>
         </div>
             <img class="img-fluid d-none d-sm-block" src="images/showcase.svg" alt="" />
       </div>
@@ -74,7 +73,7 @@
           <h3 class="mb-1 mb-md-0">Invite Your Friends</h3>
           <div class="input-group news-input">
             <input type="text" class="form-control" placeholder="Enter Email" aria-label="Enter Your Friend's Email" aria-describedby="button-addon2">
-            <button class="btn-dark btn-m sendBtn" type="button" id="button-addon2">Send</button>
+            <button id="sendEmailBtn" class="btn-dark btn-m sendBtn" type="button" id="button-addon2">Send</button>
           </div>
         </div>
       </div>
@@ -105,8 +104,11 @@
     </section>
 
     <!-- Input Form -->
-    <section id="inputForm" class="p-5">
+    <section id="bookInputForm" class="p-5 hide">
     <form class="pop-up">
+      <div class="form-group">
+        <button id="closeFormBtn"type="button" class="btn-close" aria-label="Close"></button>
+      </div>
       <div class="form-group p-1">
         <label for="titleInput">Title</label>
         <input type="text" class="form-control" id="titleInput" placeholder="">
@@ -158,5 +160,6 @@
       integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
       crossorigin="anonymous"
     ></script>
+    <script src="script.js"></script>
   </body>
 </html>
