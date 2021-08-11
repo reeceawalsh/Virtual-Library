@@ -47,6 +47,10 @@ p {
   width: 4rem;
 }
 
+.news-input {
+  width: 60%;
+}
+
 /* Form */
 
 .hide {
