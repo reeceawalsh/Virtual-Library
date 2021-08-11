@@ -4,7 +4,13 @@ const bookInputForm = document.getElementById("bookInputForm");
 const sendEmailBtn = document.getElementById("sendEmailBtn");
 const closeFormBtn = document.getElementById("closeFormBtn");
 const addBookBtn = document.getElementById("addBookBtn");
-sendEmailBtn.addEventListener("click", console.log("working1"));
+
+// Assigning form values for input
+const titleInput = document.getElementById("titleInput");
+const authorInput = document.getElementById("authorInput");
+const genreInput = document.getElementById("genreInput");
+const ratingInput = document.getElementById("ratingInput");
+const addBookForm = document.getElementById("addBookForm");
 
 popUpBtn.onclick = function () {
   bookInputForm.classList.toggle("hide");
@@ -14,33 +20,70 @@ closeFormBtn.onclick = function () {
   bookInputForm.classList.toggle("hide");
 };
 
-// After the user has filled out all of the information and clicked the addBookBtn, a new grid with all of the relevant information will be created and the object will be saved in a database.
+// Table variables
+const libraryTable = document.getElementById("libraryTable");
 
-// Adding books functions
+// Book class
+class Book {
+  constructor(title, author, genre, rating) {
+    this.title = title;
+    this.author = author;
+    this.genre = genre;
+    this.rating = rating;
+  }
+}
 
-// let myLibrary = [harryPotter, lordOfTheRings];
+class Library {
+  constructor() {
+    this.books = [];
+    console.log(this.books);
+  }
 
-// class Book {
-//   constructor(title, author, published) {
-//     this.title = title;
-//     this.author = author;
-//     this.published = published;
-//   }
-//   addBookToLibrary(title, author, published)
-// }
+  addBookToLibrary() {
+    this.books.push(getNewBookDetails());
+  }
+}
 
-// function addBookToLibrary(newBook) {
-//   myLibrary.push(newBook)
-// }
+const library = new Library();
 
-// let harryPotter = {
-//   title: "Harry Potter",
-//   author: "J.K.Rowling",
-//   published: "June 1998",
-// };
+const getNewBookDetails = () => {
+  const title = titleInput.value;
+  const author = authorInput.value;
+  const genre = genreInput.value;
+  const rating = ratingInput.value;
+  return new Book(title, author, genre, rating);
+};
 
-// let lordOfTheRings = {
-//   title: "Lord Of The Rings",
-//   author: "Tolkien",
-//   published: 1994
-// };
+const addBook = (book) => {
+  // Row
+  const bookElementRow = document.createElement("div");
+  bookElementRow.className = "row pb-2";
+  libraryTable.appendChild(bookElementRow);
+  // Title column
+  const bookElementTitleCol = document.createElement("div");
+  bookElementTitleCol.className = "col col-4";
+  bookElementRow.appendChild(bookElementTitleCol);
+  bookElementTitleCol.textContent = book.title;
+  // Author column
+  const bookElementAuthorCol = document.createElement("div");
+  bookElementAuthorCol.className = "col col-3";
+  bookElementRow.appendChild(bookElementAuthorCol);
+  bookElementAuthorCol.textContent = book.author;
+  // Genre column
+  const bookElementGenreCol = document.createElement("div");
+  bookElementGenreCol.className = "col col-3";
+  bookElementRow.appendChild(bookElementGenreCol);
+  bookElementGenreCol.textContent = book.genre;
+  // Rating column
+  const bookElementRatingCol = document.createElement("div");
+  bookElementRatingCol.className = "col col-2 text-center";
+  bookElementRow.appendChild(bookElementRatingCol);
+  bookElementRatingCol.textContent = book.rating;
+  // Add to library
+  library.books.push(book);
+};
+
+addBookForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  addBook(getNewBookDetails());
+});

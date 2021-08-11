@@ -81,7 +81,7 @@
 
     <!-- Boxes -->
     <section class="p-5">
-      <div class="container">
+      <div id="libraryTable" class="container">
         <div class="row pb-2 firstRow">
           <div class="col col-4">Title</div>
           <div class="col col-3">Author</div>
@@ -105,7 +105,7 @@
 
     <!-- Input Form -->
     <section id="bookInputForm" class="p-5 hide">
-    <form class="pop-up">
+    <form id="addBookForm" class="pop-up">
       <div class="form-group">
         <button id="closeFormBtn"type="button" class="btn-close" aria-label="Close"></button>
       </div>
@@ -119,7 +119,7 @@
       </div>
       <div class="form-group p-1">
         <label for="genreSelect">Genre</label>
-        <select class="form-control" id="genreSelect">
+        <select class="form-control" id="genreInput">
           <option>Fantasy</option>
           <option>Romance</option>
           <option>Horror</option>
@@ -131,7 +131,7 @@
       </div>
       <div class="form-group p-1">
         <label for="ratingSelect">Rating</label>
-        <select class="form-control" id="ratingSelect">
+        <select class="form-control" id="ratingInput">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -154,12 +154,12 @@
       <a href="https://github.com/reeceawalsh" target="_blank"><i class="fab fa-github"></i
       ></a>
     </footer>
-
+    <script src="script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
       crossorigin="anonymous"
     ></script>
-    <script src="script.js"></script>
+ 
   </body>
 </html>
