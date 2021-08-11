@@ -1,9 +1,24 @@
 # Virtual Library
+
 The Odin Project - Javascript Library Project
 
 ## Demo
 
-### Comments 
+https://reeceawalsh.github.io/Virtual-Library/
+
+### Comments
+
+I enjoyed designing the website and should have probably spent more time writing javascript as this was a javascript, but I was also refreshing my Bootstrap knowledge at the same time.
+
+In regards to Bootstrap, it took me longer than it would have to make the website without Bootstrap but I was having to google a lot of functionality and classes at the same time.
+
+I'm honestly not a massive fan of using it to be honest. I have a very good idea of what I want things to look like and that means I have to keep changing the Bootstrap styling anyway, and some of it can be a pain to get rid of.
+
+The speed in which you can make a button or input form look nice is good, but it's never nice enough to keep that way, so it's pointless because I would change it later regardless.
+
+It's probably quite good when you know all of the classes but I'd rather write my own styling, it's more customizable and faster for me. I might try out Tailwind again in the future though.
+
+The javascript required in this project was a little more difficult than the last projects and I think a framework like React would have made it a lot easier and more fluid. I didn't focus on classes as much as I should have, I'm sure there's a much easier way of doing what I did but I'm not sure what it is yet.
 
 ### Specification
 
@@ -13,11 +28,11 @@ All of your book objects are going to be stored in a simple array, so add a func
 let myLibrary = [];
 
 function Book() {
-  // the constructor...
+// the constructor...
 }
 
 function addBookToLibrary() {
-  // do stuff here
+// do stuff here
 }
 Write a function that loops through the array and displays each book on the page. You can display them in some sort of table, or each on their own “card”. It might help for now to manually add a few books to your array so you can see the display.
 
