@@ -38,6 +38,7 @@ class Book {
 
 let books = JSON.parse(localStorage.getItem("books")) || [];
 
+// Assigning the form inputs to a new Book object and then pushing it in the library and returning the full object to be used.
 const getNewBookDetails = () => {
   const title = titleInput.value;
   const author = authorInput.value;
@@ -48,18 +49,20 @@ const getNewBookDetails = () => {
   return newBook;
 };
 
-// Makes sure that the library is up to date
+// Makes sure that the library is up to date when the page first loads.
 const updateLibrary = () => {
   for (let i = 0; i < books.length; i++) {
     addBook(books[i]);
   }
 };
 
+// This function takes the book data and adds it to local storage via JSON and adds each piece of information to the library table as col elements.
 const addBook = (book, i) => {
   localStorage.setItem("books", JSON.stringify(books));
   // Row
   const bookElementRow = document.createElement("div");
   bookElementRow.className = "row pb-2";
+  // I'm using this element as a unique identified so that I can find and delete the full row at a later date
   bookElementRow.setAttribute("data-index", `${i}`);
   libraryTable.appendChild(bookElementRow);
   // Title column
@@ -96,6 +99,7 @@ const addBook = (book, i) => {
   });
 };
 
+// Sets the form to default values
 function clearForm() {
   titleInput.value = "";
   authorInput.value = "";
@@ -103,12 +107,14 @@ function clearForm() {
   ratingInput.value = 1;
 }
 
+// The add button on the input form will take the information and pass it into the addbook form (to be added to the library table) and into getNewBookDetails (to be added to the books array and storage). i is needed here as a unique identifier for each new object. After this, the clearform function is closed so that the user can input information on a blank form.
 addBookForm.addEventListener("submit", (e, i) => {
   e.preventDefault();
   addBook(getNewBookDetails(), i);
   clearForm();
 });
 
+// Variables needed in order to make the below function work which will close the input form if the user clicks anywhere out of the form. These elements are all the elements that are in the form.
 const closeBtn = document.getElementById("closeBtn");
 const titleLabel = document.getElementById("titleLabel");
 const title = document.getElementById("title");
@@ -118,20 +124,8 @@ const genre = document.getElementById("genre");
 const genreLabel = document.getElementById("genreLabel");
 const rating = document.getElementById("rating");
 const ratingLabel = document.getElementById("ratingLabel");
-const closeWindow = [
-  closeBtn,
-  titleLabel,
-  title,
-  author,
-  authorLabel,
-  genre,
-  genreLabel,
-  rating,
-  ratingLabel,
-  addBookForm,
-  popUpBtn,
-];
 // Close the add book form when you click anywhere out of the form
+// There must be a slicker solution but I couldn't find one at the moment
 window.addEventListener("click", (e) => {
   if (
     e.target.id !== "closeBtn" &&
