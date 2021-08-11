@@ -33,31 +33,31 @@ class Book {
   }
 }
 
-class Library {
-  constructor() {
-    this.books = [];
-    console.log(this.books);
-  }
-
-  addBookToLibrary() {
-    this.books.push(getNewBookDetails());
-  }
-}
-
-const library = new Library();
+let books = JSON.parse(localStorage.getItem("books")) || [];
 
 const getNewBookDetails = () => {
   const title = titleInput.value;
   const author = authorInput.value;
   const genre = genreInput.value;
   const rating = ratingInput.value;
-  return new Book(title, author, genre, rating);
+  const newBook = new Book(title, author, genre, rating);
+  books.push(newBook);
+  return newBook;
 };
 
-const addBook = (book) => {
+// Makes sure that the library is up to date
+const updateLibrary = () => {
+  for (let i = 0; i < books.length; i++) {
+    addBook(books[i]);
+  }
+};
+
+const addBook = (book, i) => {
+  localStorage.setItem("books", JSON.stringify(books));
   // Row
   const bookElementRow = document.createElement("div");
   bookElementRow.className = "row pb-2";
+  bookElementRow.setAttribute("data-index", `${i}`);
   libraryTable.appendChild(bookElementRow);
   // Title column
   const bookElementTitleCol = document.createElement("div");
@@ -71,7 +71,7 @@ const addBook = (book) => {
   bookElementAuthorCol.textContent = book.author;
   // Genre column
   const bookElementGenreCol = document.createElement("div");
-  bookElementGenreCol.className = "col col-3";
+  bookElementGenreCol.className = "col col-2";
   bookElementRow.appendChild(bookElementGenreCol);
   bookElementGenreCol.textContent = book.genre;
   // Rating column
@@ -79,11 +79,22 @@ const addBook = (book) => {
   bookElementRatingCol.className = "col col-2 text-center";
   bookElementRow.appendChild(bookElementRatingCol);
   bookElementRatingCol.textContent = book.rating;
-  // Add to library
-  library.books.push(book);
+  // Delete button
+  const deleteBookEntryCol = document.createElement("div");
+  deleteBookEntryCol.className = "col col-1";
+  bookElementRow.appendChild(deleteBookEntryCol);
+  const deleteBookEntryBtn = document.createElement("button");
+  deleteBookEntryBtn.className = "btn-close btn-sm deleteEntryBtn";
+  deleteBookEntryCol.appendChild(deleteBookEntryBtn);
+  deleteBookEntryBtn.addEventListener("click", (e) => {
+    libraryTable.removeChild(bookElementRow);
+    books.splice(bookElementRow, 1);
+    localStorage.setItem("books", JSON.stringify(books));
+  });
 };
 
-addBookForm.addEventListener("submit", (e) => {
+addBookForm.addEventListener("submit", (e, i) => {
   e.preventDefault();
-  addBook(getNewBookDetails());
+  addBook(getNewBookDetails(), i);
 });
+window.addEventListener("load", updateLibrary);
