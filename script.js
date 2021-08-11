@@ -11,13 +11,16 @@ const authorInput = document.getElementById("authorInput");
 const genreInput = document.getElementById("genreInput");
 const ratingInput = document.getElementById("ratingInput");
 const addBookForm = document.getElementById("addBookForm");
+let formOpen = false;
 
 popUpBtn.onclick = function () {
   bookInputForm.classList.toggle("hide");
+  formOpen = true;
 };
 
 closeFormBtn.onclick = function () {
   bookInputForm.classList.toggle("hide");
+  formOpen = false;
 };
 
 // Table variables
@@ -93,8 +96,70 @@ const addBook = (book, i) => {
   });
 };
 
+function clearForm() {
+  titleInput.value = "";
+  authorInput.value = "";
+  genreInput.value = "Fantasy";
+  ratingInput.value = 1;
+}
+
 addBookForm.addEventListener("submit", (e, i) => {
   e.preventDefault();
   addBook(getNewBookDetails(), i);
+  clearForm();
 });
+
+const closeBtn = document.getElementById("closeBtn");
+const titleLabel = document.getElementById("titleLabel");
+const title = document.getElementById("title");
+const author = document.getElementById("author");
+const authorLabel = document.getElementById("authorLabel");
+const genre = document.getElementById("genre");
+const genreLabel = document.getElementById("genreLabel");
+const rating = document.getElementById("rating");
+const ratingLabel = document.getElementById("ratingLabel");
+const closeWindow = [
+  closeBtn,
+  titleLabel,
+  title,
+  author,
+  authorLabel,
+  genre,
+  genreLabel,
+  rating,
+  ratingLabel,
+  addBookForm,
+  popUpBtn,
+];
+// Close the add book form when you click anywhere out of the form
+window.addEventListener("click", (e) => {
+  if (
+    e.target.id !== "closeBtn" &&
+    e.target.id !== "titleLabel" &&
+    e.target.id !== "titleInput" &&
+    e.target.id !== "title" &&
+    e.target.id !== "author" &&
+    e.target.id !== "authorLabel" &&
+    e.target.id !== "authorInput" &&
+    e.target.id !== "genre" &&
+    e.target.id !== "genreLabel" &&
+    e.target.id !== "genreInput" &&
+    e.target.id !== "rating" &&
+    e.target.id !== "ratingLabel" &&
+    e.target.id !== "ratingInput" &&
+    e.target.id !== "addBookForm" &&
+    e.target.id !== "popUpBtn" &&
+    e.target.id !== "addBookBtn" &&
+    formOpen === true
+  ) {
+    bookInputForm.classList.toggle("hide");
+    formOpen = false;
+    console.log(e.target.id);
+  }
+});
+
+window.addEventListener("click", (e) => {
+  console.log(e.target.id);
+});
+
 window.addEventListener("load", updateLibrary);

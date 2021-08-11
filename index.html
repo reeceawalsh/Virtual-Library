@@ -35,7 +35,7 @@
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="#library" class="nav-link">Library</a>
+              <a href="#libraryTable" class="nav-link">Library</a>
             </li>
             <li class="nav-item">
               <a href="#wishList" class="nav-link">Wish List</a>
@@ -52,13 +52,13 @@
     </nav>
 
     <!-- Showcase -->
-    <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <section id="showcase" class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
       <div class="container">
         <div class="d-sm-flex justify-content-between">
           <div>
             <h1>Book <span class="text-warning">Tracker</span></h1>
             <p class="lead ny-4">Track all of the books that you've read in the past and also all of the books that you look forward to reading. Rate each book and share your favourites with your friends!</p>
-            <button id="popUpBtn" class="btn primaryColour btn-lg">Add Your Books</button>
+           <button id="popUpBtn" class="btn primaryColour btn-lg">Add Books</button>
         </div>
             <img class="img-fluid d-none d-sm-block" src="images/showcase.svg" alt="" />
       </div>
@@ -70,7 +70,7 @@
     <section class="primaryColour p-3">
       <div id="email" class="container">
         <div class="d-md-flex justify-content-between align-items-center">
-          <h3 class="mb-1 mb-md-0">Invite Your Friends</h3>
+          <h3 id="inviteFriendsText"class="mb-1 mb-md-0">Invite Your Friends</h3>
           <div class="input-group news-input">
             <input type="text" class="form-control" placeholder="Enter Email" aria-label="Enter Your Friend's Email" aria-describedby="button-addon2">
             <button id="sendEmailBtn" class="btn-dark btn-m sendBtn" type="button" id="button-addon2">Send</button>
@@ -80,7 +80,7 @@
     </section>
 
     <!-- Boxes -->
-    <section class="p-5">
+    <section class="p-2">
       <div id="libraryTable" class="container">
         <div class="row pb-2 firstRow">
           <div class="col col-4">Title</div>
@@ -94,19 +94,19 @@
     <!-- Input Form -->
     <section id="bookInputForm" class="p-5 hide">
     <form id="addBookForm" class="pop-up">
-      <div class="form-group">
-        <button id="closeFormBtn"type="button" class="btn-close" aria-label="Close form"></button>
+      <div id="closeBtn" class="form-group">
+        <button id="closeFormBtn"type="button" class="btn-close btn-sm" aria-label="Close form"></button>
       </div>
-      <div class="form-group p-1">
-        <label for="titleInput">Title</label>
+      <div id="title" class="form-group p-1">
+        <label id='titleLabel' for="titleInput">Title</label>
         <input type="text" class="form-control" id="titleInput" placeholder="">
       </div>
-      <div class="form-group p-1">
-        <label for="authorInput">Author</label>
+      <div id="author" class="form-group p-1">
+        <label id="authorLabel" for="authorInput">Author</label>
         <input type="text" class="form-control" id="authorInput" placeholder="">
       </div>
-      <div class="form-group p-1">
-        <label for="genreSelect">Genre</label>
+      <div id="genre" class="form-group p-1">
+        <label id="genreLabel" for="genreSelect">Genre</label>
         <select class="form-control" id="genreInput">
           <option>Fantasy</option>
           <option>Romance</option>
@@ -117,8 +117,8 @@
           <option>Realistic Fiction</option>
         </select>
       </div>
-      <div class="form-group p-1">
-        <label for="ratingSelect">Rating</label>
+      <div id="rating"class="form-group p-1">
+        <label id="ratingLabel" for="ratingSelect">Rating</label>
         <select class="form-control" id="ratingInput">
           <option>1</option>
           <option>2</option>
@@ -132,11 +132,11 @@
         </select>
       </div>
       <div class="form-group p-1">
-      <button id="addBookBtn"type="submit" class="btn">Add Book</button>
+      <button id="addBookBtn" class="btn">Add Book</button>
     </div>
     </form>
   </section>
-
+<!-- Footer -->
     <footer class="d-flex flex-row justify-content-center align-items-center">
       <p id="footerText"class="p-0">Copyright © 2021 Reece Walsh</p>
       <a href="https://github.com/reeceawalsh" target="_blank"><i class="fab fa-github"></i
